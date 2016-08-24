@@ -1,43 +1,33 @@
-body {
-	position: relative
-}
+.clock {
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #ADFF67;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-size: 60px;
 
-#clock {
+ }
+
+#regular-clock {
 	z-index: 2;
-	position: fixed;
 	opacity: 1;
 
 }
 
 #hexadecimal-clock {
 	z-index: 1;
-	position: absolute;
 	opacity: 0;
 
 }
 
-#clock:hover{
+#regular-clock:hover{
 	opacity: 0
 }
 
-#clock:hover + #hexadecimal-clock {
+#regular-clock:hover + #hexadecimal-clock {
 	opacity: 1
-}
-
-
-
-.container {
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%) ;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.clocks-container {
-	position: relative;
-	margin: 0 auto;
-
 }
 
 #overlay {
@@ -58,14 +48,12 @@ body {
 }
 
 #bar {
-	
 	position: absolute;
+	transform: translate(-50%, -50%);
     left: 50%;
-    transform: translateX(-50%);
-    top: 55%;
-    transform: translateY(-50%);
-    height: 1px;
-    background: yellowgreen;
+    top: 65%;
+    height: 2px;
+    background: #ADFF67;
 
 }
 
