@@ -2,6 +2,7 @@
 var hexaDecimalNode = document.querySelector("#hexadecimal-clock")
 var timeNode = document.querySelector("#regular-clock")
 var overLayNode = document.querySelector("#overlay")
+var backgroundNode = document.querySelector("#background")
 var barNode = document.querySelector("#bar")
 
 var time = function() {
@@ -31,6 +32,10 @@ var time = function() {
 	
 	var hexClock = function (number) {
 		var newHex = number.toString(16)
+		if(newHex.length < 2) {
+			newHex = '0' + newHex
+
+		}
 		return newHex
 
 	}	
@@ -39,19 +44,22 @@ var time = function() {
 	var hexMins = hexClock(mins) 
 	var hexSecs = hexClock(secs) 
 
+
 	hexaDecimalNode.textContent = hexHrs + ":" + hexMins + ":" + hexSecs
 	
 	// update background
 	
-var changeBackgroundColor = function (hours, minutes, seconds) {
+	var changeBackgroundColor = function (hrs, mins, secs) {
 
-	var updatedHexColor = "#" + hours + minutes + seconds
+		var color1 = (Math.floor(hrs/23 * 255)).toString(16)
+		var color2 = (Math.floor(mins/59 * 255)).toString(16)
+		var color3 = (Math.floor(secs/59 * 255)).toString(16)	
 
-	overLayNode.style.background = updatedHexColor
-	
+		overLayNode.style.background = "#" + color1 + color2 + color3
+
 	}
 	
-	changeBackgroundColor(hexHrs, hexMins, hexSecs)
+	changeBackgroundColor(hrs, mins, secs)
 
 	// update expanding bar
 	
@@ -64,29 +72,4 @@ setInterval(time, 1000)
 
 
 
-
-	
-// body = document.querySelector('body') >>>>>> how you can test <<<<<<
-//var style = window.getComputedStyle(body, null)
-//console.log(style.background)
-
-
-
-//Color Change
-
-// var backgroundNode = document.querySelector("body")
-
-
-// var backgroundColorChange = function () {
-
-
-// 	backgroundNode.style.backgroundImage = "rgba(101,66,138)" //put into its own background container div
-// 	console.log(style.backgroundImage)
-
-// }
-
-// setInterval(backgroundColorChange, 1000) 
-
-
-//hover
 
